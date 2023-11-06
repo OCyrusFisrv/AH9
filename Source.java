@@ -7,11 +7,23 @@ class Node<T> {
       this.next = null;
     }
   }
-  
+
+  // Write a method, reverseList, that takes in the head of a 
+  // linked list as an argument. The method should reverse 
+  // the order of the nodes in the linked list in-place 
+  // and return the new head of the reversed linked list.
+
   class Source {
     public static <T> Node<T> reverseList(Node<T> head) {
-      // todo
+      if (head == null || head.next == null)
       return head;
+
+      Node<T> other = reverseList(head.next);
+      head.next.next = head;
+
+      head.next = null;
+
+      return other;
     }
     
     public static void main(String[] args) {
@@ -29,5 +41,7 @@ class Node<T> {
             System.out.println(head.val);
             head = head.next;            
         }
+
+
     }
   }
